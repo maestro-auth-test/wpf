@@ -743,7 +743,7 @@
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type ButtonBase}">
           <Border x:Name="ContentBorder" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" MinWidth="{TemplateBinding MinWidth}" MinHeight="{TemplateBinding MinHeight}" Padding="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding Border.CornerRadius}">
-            <ContentPresenter x:Name="ContentPresenter" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" TextElement.Foreground="{TemplateBinding Foreground}" />
+            <ContentPresenter x:Name="ContentPresenter" RecognizesAccessKey="True" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" TextElement.Foreground="{TemplateBinding Foreground}" />
           </Border>
           <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
@@ -1776,7 +1776,7 @@
           <Grid>
             <Border x:Name="rowHeaderBorder" Width="10" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,0,1,0">
               <StackPanel Orientation="Horizontal">
-                <ContentPresenter VerticalAlignment="Center" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                <ContentPresenter VerticalAlignment="Center" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                 <Control SnapsToDevicePixels="False" Template="{Binding ValidationErrorTemplate, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" Visibility="{Binding (Validation.HasError), Converter={StaticResource BooleanToVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}" />
               </StackPanel>
             </Border>
@@ -1852,7 +1852,7 @@
         <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
           <Grid>
             <Border x:Name="columnHeaderBorder" Padding="3,0,3,0" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,0,1,1">
-              <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+              <ContentPresenter RecognizesAccessKey="True" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
             </Border>
             <Thumb x:Name="PART_LeftHeaderGripper" HorizontalAlignment="Left" Style="{StaticResource ColumnHeaderGripperStyle}" />
             <Thumb x:Name="PART_RightHeaderGripper" HorizontalAlignment="Right" Style="{StaticResource ColumnHeaderGripperStyle}" />
@@ -2441,7 +2441,7 @@
               <!-- Dummy border to store Animation factor for expander -->
               <Border x:Name="AnimationFactorBorder" Width="0" Visibility="Collapsed" />
               <Border x:Name="ContentPresenterBorder" Background="{DynamicResource ExpanderContentBackground}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1,0,1,1" CornerRadius="0,0,4,4" Visibility="Collapsed">
-                <ContentPresenter x:Name="ContentPresenter" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" />
+                <ContentPresenter x:Name="ContentPresenter" RecognizesAccessKey="True" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" />
                 <Border.Resources>
                   <TranslateTransform x:Key="HeightAnimationNegative">
                     <TranslateTransform.Y>
@@ -3492,7 +3492,7 @@
                 <!--  A seperate element is added since the two orthogonal state groups that cannot touch the same property  -->
                 <Border x:Name="PressedCheckGlyph" Width="4" Height="4" Background="{DynamicResource RadioButtonCheckGlyphFill}" BorderBrush="{DynamicResource CircleElevationBorderBrush}" CornerRadius="6" Opacity="0" UseLayoutRounding="False" />
               </Grid>
-              <ContentPresenter x:Name="ContentPresenter" Grid.Column="1" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" TextElement.Foreground="{TemplateBinding Foreground}" />
+              <ContentPresenter x:Name="ContentPresenter" Grid.Column="1" RecognizesAccessKey="True" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" TextElement.Foreground="{TemplateBinding Foreground}" />
             </Grid>
           </Border>
           <ControlTemplate.Triggers>
@@ -3914,7 +3914,7 @@
     </Setter>
   </Style>
   <Style BasedOn="{StaticResource DefaultScrollViewerStyle}" TargetType="{x:Type ScrollViewer}" />
-  <Style TargetType="{x:Type Separator}">
+  <Style x:Key="DefaultSeparatorStyle" TargetType="{x:Type Separator}">
     <Setter Property="BorderBrush" Value="{DynamicResource SeparatorBorderBrush}" />
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="Margin" Value="0" />
@@ -3930,6 +3930,7 @@
       </Setter.Value>
     </Setter>
   </Style>
+  <Style BasedOn="{StaticResource DefaultSeparatorStyle}" TargetType="{x:Type Separator}" />
   <Style x:Key="SliderButtonStyle" TargetType="{x:Type RepeatButton}">
     <Setter Property="IsTabStop" Value="False" />
     <Setter Property="Focusable" Value="False" />
@@ -4672,9 +4673,12 @@
     </Setter>
   </Style>
   <Style x:Key="{x:Static ToolBar.ButtonStyleKey}" BasedOn="{StaticResource ToolBarButtonBaseStyle}" TargetType="{x:Type Button}" />
-  <Style x:Key="{x:Static ToolBar.ToggleButtonStyleKey}" BasedOn="{StaticResource ToolBarButtonBaseStyle}" TargetType="{x:Type ToggleButton}" />
-  <Style x:Key="{x:Static ToolBar.CheckBoxStyleKey}" BasedOn="{StaticResource ToolBarButtonBaseStyle}" TargetType="{x:Type CheckBox}" />
-  <Style x:Key="{x:Static ToolBar.RadioButtonStyleKey}" BasedOn="{StaticResource ToolBarButtonBaseStyle}" TargetType="{x:Type RadioButton}" />
+  <Style x:Key="{x:Static ToolBar.ToggleButtonStyleKey}" BasedOn="{StaticResource DefaultToggleButtonStyle}" TargetType="{x:Type ToggleButton}" />
+  <Style x:Key="{x:Static ToolBar.CheckBoxStyleKey}" BasedOn="{StaticResource DefaultCheckBoxStyle}" TargetType="{x:Type CheckBox}" />
+  <Style x:Key="{x:Static ToolBar.RadioButtonStyleKey}" BasedOn="{StaticResource DefaultRadioButtonStyle}" TargetType="{x:Type RadioButton}" />
+  <Style x:Key="{x:Static ToolBar.ComboBoxStyleKey}" BasedOn="{StaticResource DefaultComboBoxStyle}" TargetType="{x:Type ComboBox}" />
+  <Style x:Key="{x:Static ToolBar.MenuStyleKey}" BasedOn="{StaticResource DefaultMenuStyle}" TargetType="{x:Type Menu}" />
+  <Style x:Key="{x:Static ToolBar.SeparatorStyleKey}" BasedOn="{StaticResource DefaultSeparatorStyle}" TargetType="{x:Type Separator}" />
   <Style x:Key="{x:Static ToolBar.TextBoxStyleKey}" TargetType="{x:Type TextBox}">
     <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
     <Setter Property="FocusVisualStyle" Value="{x:Null}" />
@@ -4798,6 +4802,9 @@
     <Setter Property="TextBlock.TextAlignment" Value="Justify" />
     <Setter Property="TextElement.Foreground" Value="{DynamicResource ToolTipForeground}" />
     <Setter Property="Foreground" Value="{DynamicResource ToolTipForeground}" />
+    <Setter Property="FontFamily" Value="{DynamicResource {x:Static SystemFonts.StatusFontFamilyKey}}" />
+    <Setter Property="FontSize" Value="{DynamicResource {x:Static SystemFonts.StatusFontSizeKey}}" />
+    <Setter Property="FontStyle" Value="{DynamicResource {x:Static SystemFonts.StatusFontStyleKey}}" />
     <Setter Property="Background" Value="{DynamicResource ToolTipBackground}" />
     <Setter Property="BorderBrush" Value="{DynamicResource ToolTipBorderBrush}" />
     <Setter Property="BorderThickness" Value="{DynamicResource ToolTipBorderThemeThickness}" />
