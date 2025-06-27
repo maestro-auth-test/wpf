@@ -1,6 +1,6 @@
 {
   "tools": {
-    "dotnet": "10.0.100-preview.6.25315.105",
+    "dotnet": "10.0.100-preview.6.25315.102",
     "runtimes": {
       "dotnet/x64": [
         "$(MicrosoftNETCorePlatformsVersion)"
@@ -14,14 +14,13 @@
     }
   },
   "msbuild-sdks": {
-    "Microsoft.DotNet.Arcade.Sdk": "10.0.0-beta.25325.106",
-    "Microsoft.DotNet.Helix.Sdk": "10.0.0-beta.25325.106",
-    "Microsoft.Build.NoTargets": "3.7.56"
+    "Microsoft.DotNet.Arcade.Sdk": "10.0.0-beta.25326.109",
+    "Microsoft.Build.NoTargets": "3.7.56",
+    "Microsoft.DotNet.Helix.Sdk": "10.0.0-beta.25326.109"
   },
   "sdk": {
-    "version": "10.0.100-preview.6.25315.102"
+    "version": "10.0.100-preview.6.25315.102",
+    "version.new": "23"
   },
-  "native-tools": {
-    "windows-sdk-d3d-redist": "1.0.0"
-  }
+  "native-tools": {}
 }
