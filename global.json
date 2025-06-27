@@ -1,6 +1,6 @@
 {
   "tools": {
-    "dotnet": "10.0.100-preview.6.25315.102",
+    "dotnet": "10.0.100-preview.6.25315.105",
     "runtimes": {
       "dotnet/x64": [
         "$(MicrosoftNETCorePlatformsVersion)"
@@ -23,6 +23,7 @@
   },
   "native-tools": {
     "strawberry-perl": "5.38.0.1",
+    "wow": "1.0",
     "net-framework-48-ref-assemblies": "0.0.0.1",
     "windows-sdk-d3d-redist": "1.0.0"
   }
