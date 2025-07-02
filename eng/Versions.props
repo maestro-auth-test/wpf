@@ -22,6 +22,7 @@
     <MicrosoftDotNetCodeAnalysisVersion>10.0.0-beta.25325.106</MicrosoftDotNetCodeAnalysisVersion>
     <MicrosoftSourceLinkAzureReposGitVersion>10.0.0-beta.25325.106</MicrosoftSourceLinkAzureReposGitVersion>
     <MicrosoftSourceLinkGitHubVersion>10.0.0-beta.25325.106</MicrosoftSourceLinkGitHubVersion>
+    <somethingVersion>1.0.</somethingVersion>
   </PropertyGroup>
   <!-- Packages that come from https://github.com/dotnet/winforms -->
   <PropertyGroup>
